@@ -9,29 +9,92 @@ function caseInsensitive(s){
       return s.toLowerCase();
 }
 
-let playerSelection = caseInsensitive(prompt("Choose Rock /Paper/ Scissors"));
+function playerPlay()
+{
+    return caseInsensitive(prompt("Choose Rock /Paper/ Scissors"));
+}
 
 
-let computerSelection = computerPlay();
 
 function playRound(playerSelection,computerSelection){
     if((playerSelection==='rock' && computerSelection==='paper')|| (playerSelection==='paper' && computerSelection==='scissors') || (playerSelection==='scissors' && computerSelection==='rock'))
     {
-        return "You Lose!"+ computerSelection+" beats "+playerSelection+" !";
+        return 'l';
     }
 
     else if((playerSelection==='rock' && computerSelection==='scissors') || (playerSelection==='paper' && computerSelection==='rock' )|| (playerSelection==='scissors' && computerSelection==='paper'))
     {
-        return "You Win! "+playerSelection+" beats "+computerSelection+" !";
+        return 'w';
     }
        
     else
     {
-       return "It's a Tie !";
+       return 't';
     }
 }
 
 
 
-console.log(playRound(playerSelection,computerPlay()));
+
+
+
+function game()
+{
+    let score=[];
+    for(i=0;i<5;i++)
+    {
+        let p= playerPlay();
+        let c= computerPlay();
+        let a = playRound(p,c);
+        score.push(a);
+        if(a==='l')
+        {
+            console.log("Round: " +i+" : "+"You Lose!"+ c+" beats "+p+" !");
+        }
+        else if(a==='w')
+        {
+            console.log("Round: "+i+ " : "+"You Win! "+p+" beats "+c+" !");
+        }
+        else
+        {
+            console.log("Round: "+i+" : "+"It's a Tie !");
+        }
+                
+    }
+
+    let wins=0,loses=0;
+
+    for(i=0;i<score.length;i++)
+    {
+        if(score[i]==='w')
+        {
+            wins+=1;
+        }
+        else if(score[i]=='l')
+        {
+            loses+=1;
+        }
+    }
+
+    if(wins>=3)
+    {
+        return "YOU WIN!!!";
+    }
+    else if(loses>=3)
+    {
+        return "YOU LOSE!!!";
+    }
+    else
+    {
+        return "IT'S A TIE!!!"
+    }
+}
+
+console.log(game());
+
+
+
+
+
+
 
