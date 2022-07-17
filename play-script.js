@@ -5,112 +5,93 @@ function computerPlay()
 }
 
 
-// function caseInsensitive(s){
-//       return s.toLowerCase();
-// }
-// let playerSelection='';
 function choose(){
+
+    let computerScore=0;
+    let playerScore=0;
+    
 document.querySelector("#rock").addEventListener('click',()=> {
+
+    if(computerScore<5 && playerScore<5)
+    {
         playRound('rock',computerPlay());
+        displayScore();
+    }
+    else{
+        displayResult();
+    }
 });
 
 document.querySelector('#paper').addEventListener('click',()=>{
+
+    if(computerScore<5 && playerScore<5)
+    {
         playRound('paper',computerPlay());
+        displayScore();
+    }
+    else
+    {
+        displayResult();
+    }
 });
 
 document.querySelector('#scissors').addEventListener('click',()=>{
+
+    if(computerScore<5 && playerScore<5)
+    {
          playRound('scissors',computerPlay());
+         displayScore();
+    }
+    else
+    {
+        displayResult();
+    }
 })
-}
 
 
-choose();
-// function playerPlay()
-// {
-//     return caseInsensitive(prompt("Choose Rock /Paper/ Scissors"));
-// }
 
 
 
 function playRound(playerSelection,computerSelection){
     if((playerSelection==='rock' && computerSelection==='paper')|| (playerSelection==='paper' && computerSelection==='scissors') || (playerSelection==='scissors' && computerSelection==='rock'))
     {
-        console.log("You lose");
+        
+        //return 'l';
+        computerScore++;
     }
 
     else if((playerSelection==='rock' && computerSelection==='scissors') || (playerSelection==='paper' && computerSelection==='rock' )|| (playerSelection==='scissors' && computerSelection==='paper'))
     {
-        console.log('You win');
-    }
-       
-    else
+        //return 'w';
+        playerScore++;
+         
+    } 
+    
+}
+
+function displayScore()
+{
+    document.querySelector("#score-p").innerText=playerScore;
+    document.querySelector("#score-c").innerText=computerScore;
+}
+
+function displayResult()
+{
+    if(playerScore>computerScore)
     {
-       console.log("tie");
+        document.querySelector("#results").innerText="YOU WIN !!!";
+    }
+    else if(playerScore<computerScore)
+    {
+        document.querySelector('#results').innerText="YOU LOSE:(((";
+    }
+    else{
+        document.querySelector('#results').innerText="TIE";
     }
 }
 
+}
 
-
-
-
-
-// function game()
-// {
-//     let score=[];
-//     for(i=0;i<5;i++)
-//     {
-//         let p= playerPlay();
-//         let c= computerPlay();
-//         let a = playRound(p,c);
-//         score.push(a);
-//         if(a==='l')
-//         {
-//             console.log("Round: " +i+" : "+"You Lose!"+ c+" beats "+p+" !");
-//         }
-//         else if(a==='w')
-//         {
-//             console.log("Round: "+i+ " : "+"You Win! "+p+" beats "+c+" !");
-//         }
-//         else
-//         {
-//             console.log("Round: "+i+" : "+"It's a Tie !");
-//         }
-                
-//     }
-
-//     let wins=0,loses=0;
-
-//     for(i=0;i<score.length;i++)
-//     {
-//         if(score[i]==='w')
-//         {
-//             wins+=1;
-//         }
-//         else if(score[i]=='l')
-//         {
-//             loses+=1;
-//         }
-//     }
-
-//     if(wins>=3)
-//     {
-//         return "YOU WIN!!!";
-//     }
-//     else if(loses>=3)
-//     {
-//         return "YOU LOSE!!!";
-//     }
-//     else
-//     {
-//         return "IT'S A TIE!!!"
-//     }
-// }
-
-// console.log(game());
-
-
-
-
-
+choose();
 
 
