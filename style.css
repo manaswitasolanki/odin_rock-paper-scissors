@@ -1,0 +1,31 @@
+#header{
+    background-color: slategrey;
+    color:mintcream;
+    text-align:center;
+    font-size:50px;
+    font-weight:bold;
+    height:120px;
+}
+
+#buttons{
+    height:200px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#scores
+{
+    height:100px;
+}
+
+#results{
+    height:100px;
+    width:100px;
+    background-color: slategrey;
+    color:white;
+    font-size:40px;
+    font-weight:bolder;
+    text-align:center;
+}

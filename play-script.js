@@ -71,8 +71,8 @@ function playRound(playerSelection,computerSelection){
 
 function displayScore()
 {
-    document.querySelector("#score-p").innerText=playerScore;
-    document.querySelector("#score-c").innerText=computerScore;
+    document.querySelector("#score-p").innerText="YOU:"+playerScore;
+    document.querySelector("#score-c").innerText="COMPUTER:"+computerScore;
 }
 
 function displayResult()
